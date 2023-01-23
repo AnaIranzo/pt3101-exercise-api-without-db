@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+
 const usersRouter = require('./routes/usersRoutes');
 const vehiclesRouter = require('./routes/vehiclesRoutes')
 const foodsRouter = require('./routes/foodsRoutes')
@@ -11,6 +12,7 @@ app.get('/', (req, res) => {
 })
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
+
 app.use('/users',usersRouter)
 app.use(vehiclesRouter)
 app.use(foodsRouter)
