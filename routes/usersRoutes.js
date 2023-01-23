@@ -1,6 +1,7 @@
 const express = require('express');
 const usersRouter = express.Router();
-const usersController = require('../controllers/usersController')
+const usersController = require('../controllers/usersController');
+
 
 usersRouter.get('/', usersController.getUsers);
 
@@ -18,8 +19,6 @@ usersRouter.get('/country/:country', usersController.getCountry);
 
 usersRouter.get('/vehicles', usersController.getUVehicles);
 //http://localhost:3000/users/vehicles/vehicles?min=1&max=6
-
-
 
 
 usersRouter.get('/vehicles/vehicles', usersController.getUserVehicles);

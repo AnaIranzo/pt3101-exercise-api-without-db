@@ -1,6 +1,9 @@
 const db = require('../db/users.json');
 const { v4: uuidv4 } = require('uuid');//For the creation of RFC4122 UUIDs
 const fs = require('fs');
+const path = require('path');
+
+const dbPath = path.join(__dirname, '../db/users.json')
 
 const getUsers =  (req, res)=> {
     try {
@@ -221,8 +224,8 @@ const createUser = (req,res) => {
         if (username&&firstName&&lastName&&email) {
             let newData = []
             try {
-                //leo el json --> Cuidado con las / delante de la ruta, da error
-                fs.readFile('db/users.json', 'utf-8',(error,data)=> {
+                //leo el json --> Cuidado con las / delante de la ruta, da error 'db/users.json' o dbPath
+                fs.readFile(dbPath, 'utf-8',(error,data)=> {
                     if (error) {
                         res.status(500).json({
                             success: false,
@@ -235,7 +238,7 @@ const createUser = (req,res) => {
                 newData.push(newUser)
 
                 // Sobreescribo mi json con el array nuevo de productos (debo estar parseado a string)
-                fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
+                fs.writeFile(dbPath, JSON.stringify(newData), (error, data) => {
                     if (error) {
                         res.status(500).json({
                             success: false,
