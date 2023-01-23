@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require('uuid');//For the creation of RFC4122 UUIDs
 const fs = require('fs');
 const path = require('path');
 
-const dbPath = path.join(__dirname, '..', 'db',' users.json')
+const dbPath = path.join(__dirname, '..', 'db/users.json')
 
 const getUsers =  (req, res)=> {
     try {
@@ -269,7 +269,7 @@ const createUser = (req,res) => {
 const updateUser = (req,res)=> {
     const username = req.params.username;
 
-    fs.readFile('db/users.json', 'utf-8',(error,data)=> {
+    fs.readFile(dbPath, 'utf-8',(error,data)=> {
         if (error) {
             res.status(500).json({
                 success: false,
@@ -299,7 +299,7 @@ const updateUser = (req,res)=> {
     })
 
     
-    fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
+    fs.writeFile(dbPath, JSON.stringify(newData), (error, data) => {
         if (error) {
             res.status(500).json({
                 success: false,
@@ -322,7 +322,7 @@ const updateUser = (req,res)=> {
 
 const updateVehicles = (req, res)=> {
     const username = req.params.username;
-    fs.readFile('db/users.json', 'utf-8',(error,data)=> {
+    fs.readFile(dbPath, 'utf-8',(error,data)=> {
         if (error) {
             res.status(500).json({
                 success: false,
@@ -354,7 +354,7 @@ const updateVehicles = (req, res)=> {
     "type": "Hatchback"
     }
 } */
-    fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
+    fs.writeFile(dbPath, JSON.stringify(newData), (error, data) => {
         if (error) {
             res.status(500).json({
                 success: false,
@@ -375,7 +375,7 @@ const updateVehicles = (req, res)=> {
 
 const updateFoods = (req, res) => {
     const username = req.params.username;
-    fs.readFile('db/users.json', 'utf-8',(error,data)=> {
+    fs.readFile(dbPath, 'utf-8',(error,data)=> {
         if (error) {
             res.status(500).json({
                 success: false,
@@ -411,7 +411,7 @@ const updateFoods = (req, res) => {
 "Chicha andina"
 ]}
 } */
-    fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
+    fs.writeFile(dbPath, JSON.stringify(newData), (error, data) => {
         if (error) {
             res.status(500).json({
                 success: false,
@@ -433,7 +433,7 @@ const updateFoods = (req, res) => {
 const updateStatus = (req,res) => {
     
         const username = req.params.username;
-        fs.readFile('db/users.json', 'utf-8',(error,data)=> {
+        fs.readFile(dbPath, 'utf-8',(error,data)=> {
             if (error) {
                 res.status(500).json({
                     success: false,
@@ -451,7 +451,7 @@ const updateStatus = (req,res) => {
         })
         
         
-        fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
+        fs.writeFile(dbPath, JSON.stringify(newData), (error, data) => {
             if (error) {
                 res.status(500).json({
                     success: false,
@@ -476,7 +476,7 @@ const deleteUser = (req, res) => {
         const email = req.body.email;
         console.log(email);
 
-        fs.readFile('db/users.json', 'utf-8',(error,data)=> {
+        fs.readFile(dbPath, 'utf-8',(error,data)=> {
             if (error) {
                 res.status(500).json({
                     success: false,
@@ -497,7 +497,7 @@ const deleteUser = (req, res) => {
         }
         
         
-        fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
+        fs.writeFile(dbPath, JSON.stringify(newData), (error, data) => {
             if (error) {
                 res.status(500).json({
                     success: false,
